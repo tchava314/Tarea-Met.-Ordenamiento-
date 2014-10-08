@@ -1,5 +1,7 @@
 package Logic;
 
+import java.util.LinkedList;
+
 /**
  * Clase del con varios metodos de ordenamiento
  * 
@@ -119,5 +121,46 @@ public class SortMethods {
 			}
 		}return array;
 	}
+	
+	/**
+	 * Ordena enteros procesando sus dígitos de forma individual.
+	 * @param array
+	 * @param digitos
+	 */
+	public static void RadixSort(int[] array,int digitos) {
+		//se crean como cajas para guardar numeros temporalmente
+		//esta importacion sirve para crear cajitas
+        LinkedList[] cajas = { 
+          new LinkedList<Integer>(), // 0
+          new LinkedList<Integer>(), // 1
+          new LinkedList<Integer>(), // 2
+          new LinkedList<Integer>(), // 3
+          new LinkedList<Integer>(), // 4
+          new LinkedList<Integer>(), // 5
+          new LinkedList<Integer>(), // 6
+          new LinkedList<Integer>(), // 7
+          new LinkedList<Integer>(), // 8
+          new LinkedList<Integer>()  // 9
+        };
+        
+        for (int i = 1; i <= digitos; i++) {
+        	//mete los numeros en cajas conforme la division entre 10
+            for (int j = 0; j < array.length; j++) {
+                cajas[getRadix(array[j], i)].add(array[j]);
+            }
+            int posicion = 0;
+            for (int k = 0; k < cajas.length; k++) {
+            	//si la caja esta vacia la acomoda en orden
+                while (!cajas[k].isEmpty()) {
+                    array[posicion] = (Integer)cajas[k].removeFirst();
+                    posicion++;
+                }
+            }
+        }
+    }
+    public static int getRadix(int numero, int radix) {
+    	//retorna un numero dividido entre un 10**potencia
+    	return (int) (numero / Math.pow(10, radix - 1)) % 10;
+    }
 		
 }

@@ -26,6 +26,8 @@ public class Sort {
 		method.BubbleSort(array);
 		//method.SelectionSort(array);
 		//method.MergeSort(array);
+		//methor.RadixSort(array,4);
+		//el numero simplemente funciona como potencia
 
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
