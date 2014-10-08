@@ -24,6 +24,8 @@ public class Sort {
 		int[] array = { 5, 4, 3, 7, 88, 9, 1 };
 
 		method.BubbleSort(array);
+		//method.SelectionSort(array);
+		//method.MergeSort(array);
 
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
