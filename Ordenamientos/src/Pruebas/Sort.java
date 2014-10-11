@@ -1,5 +1,7 @@
 package Pruebas;
 
+import Logic.Comparacion;
+import Logic.Int;
 import Logic.SortMethods;
 
 /**
@@ -20,15 +22,19 @@ public class Sort {
 	public static void main(String[] args) {
 
 		SortMethods method = new SortMethods();
-
-		int[] array = { 5, 4, 3, 7, 88, 9, 1 };
-
-		method.QuickSort(array);
+		Comparacion a1 = new Int(1);
+		Comparacion a2 = new Int(2);
+		Comparacion a3 = new Int(3);
+		Comparacion a8 = new Int(8);
+		Comparacion array[] = { a8, a1, a3, a2 };
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+		}
+		method.BubbleSort(array);
 
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
 		}
 
 	}
-
 }
