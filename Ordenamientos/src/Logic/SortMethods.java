@@ -44,7 +44,11 @@ public class SortMethods {
 				break;
 		}
 	}
-	public void insertSort(int[] a){
+/**
+ * 
+ * @param a arreglo que se desea ordenar
+ */
+ public void insertSort(int[] a){
 		int tam= a.length;
 		for (int i=0; i<tam-1; i++){
 			if (a[i+1]<a[i]){
