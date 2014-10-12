@@ -15,14 +15,13 @@ public class Int<ele> implements Comparacion {
 		return num;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
-	}
-
 	public int Comparar(Comparacion obj) {
 		if ((this.getNum() > ((Int) obj).getNum())) {
 			return 1;
 
+		}
+		if ((this.getNum() == ((Int) obj).getNum())) {
+			return 0;
 		} else {
 			return -1;
 		}

@@ -25,15 +25,15 @@ public class Sort {
 		Comparacion a1 = new Int(1);
 		Comparacion a2 = new Int(2);
 		Comparacion a3 = new Int(3);
-		Comparacion a8 = new Int(8);
-		Comparacion array[] = { a8, a1, a3, a2 };
+		Comparacion a8 = new Int(4);
+		Comparacion array[] = { a2, a1, a8, a3 };
 		for (int i = 0; i < array.length; i++) {
-			System.out.println(array[i]);
+			System.out.println(((Int) array[i]).getNum());
 		}
-		method.BubbleSort(array);
+		method.QuickSort(array);
 
 		for (int i = 0; i < array.length; i++) {
-			System.out.println(array[i]);
+			System.out.println(((Int) array[i]).getNum());
 		}
 
 	}
