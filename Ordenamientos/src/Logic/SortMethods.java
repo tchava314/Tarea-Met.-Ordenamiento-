@@ -1,5 +1,7 @@
 package Logic;
 
+import Logic.Auxiliares;
+
 /**
  * Clase del con varios metodos de ordenamiento
  * 
@@ -40,6 +42,17 @@ public class SortMethods {
 
 			if (swap == false)
 				break;
+		}
+	}
+	public void insertSort(int[] a){
+		int tam= a.length;
+		for (int i=0; i<tam-1; i++){
+			if (a[i+1]<a[i]){
+				int temp=a[i+1];
+				int posDelMenor=Auxiliares.buscaMenor(a[i+1], i+1, a) ;
+				Auxiliares.mover(posDelMenor+1, i+1, a);
+				a[posDelMenor+1]=temp;
+			}			
 		}
 	}
 
