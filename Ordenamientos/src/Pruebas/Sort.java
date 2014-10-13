@@ -1,8 +1,6 @@
 package Pruebas;
 
-import Logic.SortMethods;
-
-/**
+import Logic.*;/**
  * Clase main para pruebas
  * 
  * @author Tobias
@@ -16,19 +14,22 @@ public class Sort {
 	 * 
 	 * @param args
 	 */
-
+	/*
 	public static void main(String[] args) {
-
-		SortMethods method = new SortMethods();
-
-		int[] array = { 5, 4, 3, 7, 88, 9, 1 };
-
-		method.BubbleSort(array);
-
-		for (int i = 0; i < array.length; i++) {
-			System.out.println(array[i]);
-		}
-
-	}
+		Cronometro crono= new Cronometro();
+		SortMethods M=new SortMethods();
+		Int[] a={new Int(1)};
+		//M.BubbleSort(a);
+		for (int i=0;i<1;i++)
+			System.out.println(a[i].getNum());
+		crono.inicio();
+		M.QuickSort(a);
+		crono.fin();
+		
+		M.RadixSort(a,2);
+		System.out.println(crono.getDuracion());
+		for (int i=0;i<1;i++)
+			System.out.println(a[i].getNum());
+	}*/
 
 }
