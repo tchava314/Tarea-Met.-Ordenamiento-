@@ -15,7 +15,7 @@ public class Informacion {
      * @param nombre nombre del algoritmo
      */
 	public void addValue(long tiempo,String nombre){
-		objDataset.setValue(tiempo,"nombre","nombre");
+		objDataset.setValue(tiempo,nombre,nombre);
 	}
 	/**
 	 * este medoto crea un grafico de barras en logica
@@ -23,8 +23,8 @@ public class Informacion {
 	public void crearGrafico(){
 		 Data = ChartFactory.createBarChart(
 			    parametros.titulo,     //titulo
-			    parametros.ejeVertical,     //eje vertical
-			    parametros.ejeHorizontal,         //eje horizontal
+			    parametros.ejeHorizontal,     //eje Horizontal
+			    parametros.ejeVertical,         //eje Vertical
 			    objDataset,         //datos 
 			    PlotOrientation.VERTICAL, // orientacion
 			    true,             // incluir leyenda

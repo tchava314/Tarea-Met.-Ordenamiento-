@@ -39,15 +39,16 @@ public class SortMethods<ele> {
 	 *            Arreglo que recibimos para ordenar
 	 * 
 	 */
-	public void BubbleSort(Comparacion array[]) {
+	public void BubbleSort(Comparacion array[],long repeticiones) {
 		
 		boolean swap = true;
 		int j = 0;
-		while (swap) {
+		while (swap && (repeticiones>0)) {
 			swap = false;
+			repeticiones--;
 			j++;
 			for (int i = 0; i < array.length - 1; i++) {
-
+				
 				if (array[i].Comparar(array[i + 1]) == 1) {
 					Swap(array, i, i + 1);
 					swap = true;
@@ -72,7 +73,7 @@ public class SortMethods<ele> {
 	 * 
 	 */
 
-	public void QuickSortAux(Comparacion arreglo[], int i, int j) {
+	public void QuickSortAux(Comparacion arreglo[], int i, int j,long repeticiones) {
 		if (i >= j)
 			return;
 
@@ -80,7 +81,8 @@ public class SortMethods<ele> {
 		int rigth = j;
 		if (left != rigth) {
 			int piv = (i);
-			while (left != rigth) {
+			while (left != rigth && (repeticiones>0)) {
+				repeticiones--;
 				while ((((arreglo[rigth].Comparar(arreglo[piv]) >= 0) && (left < rigth))))
 					rigth--;
 				while (((arreglo[left].Comparar(arreglo[piv]) < 0) && (left < rigth)))
@@ -90,8 +92,8 @@ public class SortMethods<ele> {
 				}
 
 				if (left == rigth) {
-					QuickSortAux(arreglo, i, left - 1);
-					QuickSortAux(arreglo, left + 1, j);
+					QuickSortAux(arreglo, i, left - 1,repeticiones);
+					QuickSortAux(arreglo, left + 1, j,repeticiones);
 				}
 			}
 		}
@@ -107,11 +109,11 @@ public class SortMethods<ele> {
 	 * 
 	 */
 
-	public void QuickSort(Comparacion arreglo[]) {
-		QuickSortAux(arreglo, 0, arreglo.length - 1);
+	public void QuickSort(Comparacion arreglo[], long repeticiones) {
+		QuickSortAux(arreglo, 0, arreglo.length - 1,repeticiones);
 	}
 
-	public void SelectionSort(Comparacion[] array) {
+	public void SelectionSort(Comparacion[] array,long repeticiones) {
 		int tmp;
 		Comparacion head = array[0];
 		int tail = array.length - 1;
@@ -120,7 +122,11 @@ public class SortMethods<ele> {
 		}
 		for (int i = 0; i <= tail; i++) {
 			tmp = i;
+			if (repeticiones<0)
+				break;
+			repeticiones--;
 			for (int j = i + 1; j <= tail; j++) {
+				
 				if ((array[j].Comparar(array[tmp]) < 0)) {
 					tmp = j;
 				}
@@ -137,7 +143,7 @@ public class SortMethods<ele> {
 	 * @return retorna el arreglo ordenado
 	 */
 
-	public Comparacion[] MergeSort(Comparacion[] array) {
+	public Comparacion[] MergeSort(Comparacion[] array,long repeticiones) {
 		// divide la lista en 2, izquierda y derecha
 		int izquierda = array.length / 2;
 		int derecha = array.length - izquierda;
@@ -145,15 +151,16 @@ public class SortMethods<ele> {
 		Comparacion array2[] = new Comparacion[derecha];
 		int j = 0, k = 0, w = 0;
 
-		if (array.length > 1) {// mientras tenga mas de un digito
+		if (array.length > 1 && repeticiones>0) {// mientras tenga mas de un digito
+			repeticiones--;
 			// crea una nueva lista a la izquierda
 			for (int i = 0; i < izquierda; i++)
 				array1[i] = array[i];
 			// crea una nueva lista a la derecha
 			for (int i = izquierda; i < izquierda + derecha; i++)
 				array2[i - izquierda] = array[i];
-			array1 = MergeSort(array1);// utiliza recursion
-			array2 = MergeSort(array2);
+			array1 = MergeSort(array1,repeticiones);// utiliza recursion
+			array2 = MergeSort(array2,repeticiones);
 
 			// mientras cada nueva lista sea diferente de 0
 			while (array1.length != j && array2.length != k) {
@@ -189,7 +196,7 @@ public class SortMethods<ele> {
 	 * @param digitos
 	 *            recibe un entero
 	 */
-	public static void RadixSort(Comparacion[] array, int digitos) {
+	public static void RadixSort(Comparacion[] array, int digitos,long repeticiones) {
 		// se crean como cajas para guardar numeros temporalmente
 		// esta importacion sirve para crear cajitas
 		LinkedList[] cajas = { new LinkedList<Integer>(), // 0
@@ -206,6 +213,9 @@ public class SortMethods<ele> {
 
 		for (int i = 1; i <= digitos; i++) {
 			// mete los numeros en cajas conforme la division entre 10
+			if (repeticiones<0)
+				break;
+			repeticiones--;
 			for (int j = 0; j < array.length; j++) {
 				cajas[getRadix(array[j], i)].add(array[j]);
 			}
@@ -231,9 +241,12 @@ public class SortMethods<ele> {
 	 * @param a
 	 *            recibe un arreglo de datos
 	 */
-	public void insertSort(Comparacion[] a) {
+	public void insertSort(Comparacion[] a,long repeticiones) {
 		int tam = a.length;
 		for (int i = 0; i < tam - 1; i++) {
+			if(repeticiones<0)
+				break;
+			repeticiones--;
 			if ((a[i + 1].Comparar(a[i])) < 0) {
 				Comparacion temp = a[i + 1];
 				int posDelMenor = buscaMenor(a[i + 1], i + 1, a);
